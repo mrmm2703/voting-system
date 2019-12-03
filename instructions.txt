@@ -1,0 +1,4 @@
+To get started, navigate to the "init-test" folder using the command "cd init-test" in the terminal below.
+Then type in "python manage.py" for the management interface or "python vote.py" for the voting interface.
+
+The password for the management interface is "elephant01".
