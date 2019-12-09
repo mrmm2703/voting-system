@@ -2,7 +2,7 @@
 import getpass
 import csv
 
-# Function to print out scores from scores.csv file
+# Function to get scores from scores.csv file
 def viewScores():
     # Iterate through every row in scores.csv
     with open("scores.csv", "r", newline="") as scores:
@@ -26,8 +26,8 @@ def remCand(toRem):
     # Open and put existing scores.csv into memory
     with open("scores.csv", "r", newline="") as csvFile:
         reader = csv.reader(csvFile)
-        for row in reader:
-            if(row[0] != toRem):
+        for i,row in enumerate(reader):
+            if(i != int(toRem)):
                 lines.append(row)
     # Write modified scores.csv with deleted row
     with open("scores.csv", "w", newline="") as csvFile:

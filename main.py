@@ -2,7 +2,7 @@
 import tkinter as tk
 import tkinter.messagebox
 import manage
-from vote import *
+import vote
 
 password = "01"
 
@@ -63,9 +63,8 @@ def goToRemCandidate():
     remCandRoot = tk.Tk()
     remCandRoot.title("Remove candidate")
     tk.Label(remCandRoot, text="Choose a candidate to remove:").grid(column=0, row=0, pady=5, padx=25)
-    candidates = openScores()
+    candidates = vote.openScores()
     for i,row in enumerate(candidates):
-        total = i
         if(i == 0):
             continue
         tk.Button(remCandRoot, text=str(row[0]), command= lambda i=i: toRemCand(str(i))).grid(row=i, column=0, padx=5, pady=5)
@@ -90,7 +89,6 @@ def goToManagementMenu():
 
 def checkPswd(input):
     global pswdRoot
-    print(input)
     if(input != password):
         tk.messagebox.showerror("Incorrect password", "Incorrect password entered. Please try again.")
         pswdRoot.destroy()
@@ -121,13 +119,13 @@ def goToMain():
     root.title("Voting system")
 
     tk.Label(root, text="Choose a person to vote for from the list below:").grid(row=0, column=0, padx=15, pady=5)
-    candidates = openScores()
+    candidates = vote.openScores()
 
     for i,row in enumerate(candidates):
         total = i
         if(i == 0):
             continue
-        tk.Button(root, text=str(row[0]), command= lambda i=i: updateVotes(candidates,str(i))).grid(row=i, column=0, padx=5, pady=5)
+        tk.Button(root, text=str(row[0]), command= lambda i=i: vote.updateVotes(candidates,str(i))).grid(row=i, column=0, padx=5, pady=5)
 
     tk.Label(root, text="When finished, close this window to finalise vote.").grid(row=total+1, column=0, pady=5)
     tk.Button(root, text="Management", command=goToManagement).grid(row=total+2, column=0, pady=10)

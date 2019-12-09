@@ -6,7 +6,7 @@ def openScores():
     readCsv = open("scores.csv", "r", newline="")
     reader = csv.reader(readCsv)
     lines = list()
-    # Loop and print every row except the first row (index 0)
+    # Loop and get every row except the first row (index 0)
     for i, value in enumerate(reader):
         lines.append(value)
         if i == 0:
